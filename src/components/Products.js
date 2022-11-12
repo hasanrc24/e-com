@@ -17,9 +17,10 @@ const Products = () => {
         {id: uuid(), category: "watch", name: "Apple Watch", description: "Apple premium watch", price: "$400", image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"},
         {id: uuid(), category: "phone", name: "iPhone 14 pro", description: "Apple iPhone 14 pro", price: "$1100", image: "https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"}
     ]
+    
 
   return (
-    <main>
+    <main style={{marginTop: "75px"}}>
         <Grid container justify="center" spacing="6">
             {
                 initialProducts.map((prd) => {
