@@ -106,17 +106,14 @@ const Nav = styled.nav`
         flex-direction: column;
         visibility: hidden;
         opacity: 0;
-        transform: translateX(100%);
-        /* transform-origin: top; */
-        // transition: all 1s linear;
+        transform: translateY(-100%);
         }
         .active .navbar-lists {
         visibility: visible;
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
         z-index: 999;
-        transform-origin: right;
-        // transition: all 1s linear;
+        transform-origin: top;
         .navbar-link {
             font-size: 1rem;
         }
@@ -179,7 +176,7 @@ const Nav = styled.nav`
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <FiShoppingCart className="cart-trolley" />
-              <span className="cart-total--item"> 10 </span>
+              <span className="cart-total--item"> 8 </span>
             </NavLink>
           </li>
         </ul>

@@ -7,5 +7,47 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Work Sans", sans-serif;
   }
+  .flex{
+    display: flex;
+    gap: 1rem;
+  }
+  .justify-center{
+    justify-content: center;
+  }
+  .items-center{
+    align-items: center;
+  }
+  .m-auto{
+    margin: auto;
+  }
+  .container {
+    padding: 0 3rem;
+    margin: 0 auto;
+  }
+  .grid {
+    display: grid;
+    gap: 2rem;
+  }
+  .grid-two-column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-three-column {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-four-column{
+     grid-template-columns: 1fr 1.2fr .5fr .8fr ;
+  }
+  .grid-five-column{
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .btn{
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: rgba(98, 84, 243, 1);
+    padding: .6rem;
+    color: white;
+    font-size: 15px;
+    border-radius: 3px;
+  }
 
 `

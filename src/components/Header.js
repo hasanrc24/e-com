@@ -15,7 +15,7 @@ const Header = () => {
 }
 
 const HeaderSection = styled.header`
-    padding: 0 4.8rem;
+    padding: 0 2.8rem;
     height: 5rem;
     background-color: ${({ theme }) => theme.colors.bg};
     display: flex;
