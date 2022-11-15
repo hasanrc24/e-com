@@ -30,7 +30,7 @@ const Main = styled.main`
   margin: 2.5rem 0;
 
   .hero-left{
-    padding-left: 13rem;
+    padding-left: 10rem;
   }
   .hero-img{
     width: 75%;

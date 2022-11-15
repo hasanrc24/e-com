@@ -1,13 +1,15 @@
 import React from 'react'
 import Hero from '../components/Hero'
+import Services from '../components/Services';
 
 const Home = () => {
 
   const heading = "E-com store";
   return (
-    <div>
+    <>
       <Hero heading={heading} />
-    </div>
+      <Services />
+    </>
   )
 }
 

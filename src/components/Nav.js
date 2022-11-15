@@ -106,7 +106,7 @@ const Nav = styled.nav`
         flex-direction: column;
         visibility: hidden;
         opacity: 0;
-        transform: translateY(-100%);
+        transform: translateY(100%);
         }
         .active .navbar-lists {
         visibility: visible;

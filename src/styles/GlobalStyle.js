@@ -20,6 +20,10 @@ export const GlobalStyle = createGlobalStyle`
   .m-auto{
     margin: auto;
   }
+  .total-center{
+    margin: auto;
+    text-align: center;
+  }
   .container {
     padding: 0 3rem;
     margin: 0 auto;
