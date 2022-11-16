@@ -63,7 +63,7 @@ const Section = styled.section`
         height: 2.5rem;
         padding: 0.4rem;
         border-radius: 50%;
-        color: rgba(98,84,243,1);
+        color: ${({theme}) => theme.colors.btn};
         background-color: #fff;
     }
     @media(max-width: ${({ theme }) => theme.media.mobile}){

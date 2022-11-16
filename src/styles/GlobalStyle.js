@@ -14,6 +14,9 @@ export const GlobalStyle = createGlobalStyle`
   .justify-center{
     justify-content: center;
   }
+  .justify-between{
+    justify-content: space-between;
+  }
   .items-center{
     align-items: center;
   }
@@ -47,11 +50,12 @@ export const GlobalStyle = createGlobalStyle`
   .btn{
     text-decoration: none;
     text-transform: uppercase;
-    background-color: rgba(98, 84, 243, 1);
+    background-color: ${({theme}) => theme.colors.btn};
     padding: .6rem;
     color: white;
     font-size: 15px;
     border-radius: 3px;
+    border: none;
   }
 
 `
