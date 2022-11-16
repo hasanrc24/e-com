@@ -17,6 +17,9 @@ export const GlobalStyle = createGlobalStyle`
   .justify-between{
     justify-content: space-between;
   }
+  .justify-evenly{
+    justify-content: space-evenly;
+  }
   .items-center{
     align-items: center;
   }
@@ -56,6 +59,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 15px;
     border-radius: 3px;
     border: none;
+    cursor: pointer;
   }
 
 `

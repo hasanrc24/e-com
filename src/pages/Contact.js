@@ -36,6 +36,9 @@ const Section = styled.section`
         cursor: pointer;
         margin-right: auto !important;
       }
+      .btn{
+        padding: 9px 2rem;
+      }
     }
 `
 

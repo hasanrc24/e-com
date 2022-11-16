@@ -2,7 +2,7 @@ import React from 'react'
 
 const ErrorPage = () => {
   return (
-    <div>ErrorPage</div>
+    <h1 className='total-center'>Page not found</h1>
   )
 }
 
