@@ -60,6 +60,10 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 3px;
     border: none;
     cursor: pointer;
+    transition: ease all .2s;
+    &:hover{
+      transform: scale(0.97) !important;
+    }
   }
 
 `

@@ -6,6 +6,10 @@ import { BsInstagram } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+
+    const handleSubscribe = (e) =>{
+        e.preventDefault();
+    }
   return (
     <Section>
         <div className='flex justify-between talk-part total-center'>
@@ -14,24 +18,24 @@ const Footer = () => {
         </div>
 
         <footer>
-            <div className='flex justify-center'>
+            <div className='flex justify-center info'>
                 <div>
                     <h5>E-com</h5>
                     <p>Lorem ipsum dolor, sit amet <br /> consectetur adipisicing elit.</p>
                 </div>
                 <div>
                     <h5>Subscribe to get important updates</h5>
-                    <form>
+                    <form onSubmit={handleSubscribe}>
                         <input type="text" placeholder="Your e-mail" className='form-inp' /> <br />
-                        <input type="submit" className="btn" />
+                        <input type="submit" value="subscribe" className="btn" />
                     </form>
                 </div>
                 <div>
                     <h5>Follow us</h5>
                     <div className='flex'>
-                        <BsDiscord />
-                        <BsLinkedin />
-                        <BsInstagram />
+                        <BsDiscord className='icons' />
+                        <BsLinkedin className='icons' />
+                        <BsInstagram className='icons' />
                     </div>
                 </div>
                 <div>
@@ -72,7 +76,7 @@ const Section = styled.section`
                 padding: 8px;
                 border-radius: 3px;
                 border: none;
-                margin: 1rem 0;
+                margin: 0 0 1rem 0;
             }
         }
         h5{
@@ -82,10 +86,23 @@ const Section = styled.section`
             width: 100%;
             margin: 3rem 0 3rem 0;
         }
+        .icons{
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all .3s ease ;
+            &:hover{
+                color: ${({theme}) => theme.colors.btn};
+            }
+        }
     }
     @media(max-width: ${({theme}) => theme.media.mobile}){
         .talk-part{
             max-width: 27rem;
+        }
+        .info{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 0 1rem;
         }
     }
 `
