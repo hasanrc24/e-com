@@ -5,17 +5,17 @@ import styled from 'styled-components';
 const Product = ({product}) => {
     
     console.log(product);
-    const {image, name, price, category} = product;
+    const {id, image, name, price, category} = product;
   return (
       <Wrapper className='total-center'>
-            <Link to={`/singleproduct/${product.id}`} className="prod-link">
+            <Link to={`/singleproduct/${id}`} className="prod-link">
                 <figure>
                     <img src={image} alt={product.id} />
                     <figcaption>{category}</figcaption>
                 </figure>
                 <div className='flex justify-between details'>
                     <p>{name}</p>
-                    <p><span>{'\u09F3'} </span>{price}</p>
+                    <p><span>{'\u09F3'} </span>{price/100}</p>
                 </div>
             </Link>
         </Wrapper>
@@ -29,6 +29,14 @@ const Wrapper = styled.div`
     text-decoration: none !important;
     .prod-link{
         text-decoration: none;
+        .details{
+            color: ${({theme}) => theme.colors.text};
+            padding: 7px 14px;
+            text-transform: capitalize;
+            p{
+                text-decoration: none;
+            }
+        }
     }&:hover img{
         transition: all .3s ease;
         transform: scale(1.2);
@@ -50,14 +58,6 @@ const Wrapper = styled.div`
             border-radius: 14px;
         }
 
-    }
-    .details{
-        color: ${({theme}) => theme.colors.text};
-        padding: 7px 14px;
-        text-transform: capitalize;
-        p{
-            text-decoration: none;
-        }
     }
 `
 

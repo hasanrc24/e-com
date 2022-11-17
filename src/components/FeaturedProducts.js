@@ -5,20 +5,23 @@ import Product from './Product';
 
 const FeaturedProducts = () => {
 
-    const {featuredProducts} = useProduct();
+    const {featuredProducts, loading} = useProduct();
   return (
     <Section>
         <h5>CHECK NOW</h5>
         <h2>Our featured products</h2>
-        <div className='grid grid-three-column'>
+        {
+            loading ? <div className='total-center'>Loading...</div> : 
+            <div className='grid grid-three-column'>
             {
-                featuredProducts.map((prod) => {
+                featuredProducts?.map((prod) => {
                     return (
                     <Product product={prod} key={prod.id} />
                     )
                 })
             }
             </div>
+        }
     </Section>
   )
 };
