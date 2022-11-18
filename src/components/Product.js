@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const Product = ({product}) => {
     
-    console.log(product);
     const {id, image, name, price, category} = product;
   return (
       <Wrapper className='total-center'>

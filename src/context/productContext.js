@@ -10,7 +10,9 @@ const initialState = {
     loading: false,
     error: false,
     products: [],
-    featuredProducts: []
+    featuredProducts: [],
+    singleLoading: false,
+    singleProduct: {}
 }
 
 const ContextProvider = ({children}) => {
@@ -27,12 +29,22 @@ const ContextProvider = ({children}) => {
         }
     }
     
+    const getSingleProduct = async (url) =>{
+        dispatch({type: "SINGLE_LOADING"});
+        try {
+            const {data} = await axios.get(url);
+            dispatch({type: "SINGLE_PRODUCT", payload: data});
+        } catch (error) {
+            dispatch({type: "ERROR"});
+        }
+    }
+
     useEffect(() => {
         getProducts(url);
     }, []);
 
     return (
-        <ProductContext.Provider value={{...state}}>
+        <ProductContext.Provider value={{...state, getSingleProduct}}>
             {children}
         </ProductContext.Provider>
     );
