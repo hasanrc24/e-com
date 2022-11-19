@@ -20,12 +20,13 @@ const Star = ({stars,reviews}) => {
         <div className='stars-class'>
             {ratingStar}
         </div>
-        <h5>{reviews} Reviews</h5>
+        <h5>({reviews} Reviews)</h5>
     </Wrapper>
   )
 };
 const Wrapper = styled.div`
-
+    display: flex;
+    gap: 5px;
     .stars-class{
         color: #FDCC0D;
     }
