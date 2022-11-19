@@ -40,6 +40,11 @@ const Section = styled.section`
         padding: 9px 2rem;
       }
     }
+    @media(max-width: ${({theme}) => theme.media.mobile}){
+      .contact-form{
+        max-width: 65%;
+      }
+    }
 `
 
 export default Contact

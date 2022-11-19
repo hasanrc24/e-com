@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useProduct } from '../context/productContext';
+import AddToCart from './AddToCart';
 import ProductImage from './ProductImage';
 import Star from './Star';
 
@@ -11,14 +12,14 @@ const SingleProduct = () => {
     const {id} = useParams();
     const {getSingleProduct, singleLoading, singleProduct} = useProduct();
 
-    const {category, company, description, name, image, id: alias, price, reviews, stars, stock} = singleProduct;
+    const {company, description, name, image, id: alias, price, reviews, stars, stock, colors} = singleProduct;
     useEffect(() => {
         getSingleProduct(`${api}?id=${id}`);
     }, []);
   return (
     <Wrapper>
         {
-            singleLoading ? <p className='total-center'>Loading</p> : 
+            singleLoading ? <p className='total-center'>Loading...</p> : 
             <div className='container grid grid-two-column'>
               <div className='total-center'>
                 <ProductImage image={image} />
@@ -30,6 +31,8 @@ const SingleProduct = () => {
                 <p>{description}</p>
                 <h5>Available: {stock > 0 ? "In Stock" : "Not Available"}</h5>
                 <h5 >Brand: {company}</h5>
+                <hr />
+                {stock > 0 && <AddToCart colors={colors} stock={stock} />}
               </div>
             </div>
         }
@@ -50,6 +53,18 @@ const Wrapper = styled.section`
     }
     h3, h5{
       text-transform: capitalize;
+    }
+  }
+  @media(max-width: ${({theme}) => theme.media.mobile}){
+    margin: 2rem 0;
+    .grid-two-column{
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .container{
+      padding: 0;
+    }
+    .prod-details{
+      padding: 1rem;
     }
   }
 `
