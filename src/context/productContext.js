@@ -11,8 +11,8 @@ const initialState = {
     error: false,
     products: [],
     featuredProducts: [],
-    singleLoading: false,
-    singleProduct: {}
+    singleProduct: {},
+    gridView: true,
 }
 
 const ContextProvider = ({children}) => {
@@ -39,12 +39,19 @@ const ContextProvider = ({children}) => {
         }
     }
 
+    const setGridView = () => {
+        dispatch({type: "SET_GRID"});
+    }
+    const setListView = () => {
+        dispatch({type: "SET_LIST"});
+    }
+
     useEffect(() => {
         getProducts(url);
     }, []);
 
     return (
-        <ProductContext.Provider value={{...state, getSingleProduct}}>
+        <ProductContext.Provider value={{...state, getSingleProduct, setGridView, setListView}}>
             {children}
         </ProductContext.Provider>
     );

@@ -10,7 +10,7 @@ const api = "https://api.pujakaitem.com/api/products";
 const SingleProduct = () => {
 
     const {id} = useParams();
-    const {getSingleProduct, singleLoading, singleProduct} = useProduct();
+    const {getSingleProduct, loading, singleProduct} = useProduct();
 
     const {company, description, name, image, id: alias, price, reviews, stars, stock, colors} = singleProduct;
     useEffect(() => {
@@ -19,7 +19,7 @@ const SingleProduct = () => {
   return (
     <Wrapper>
         {
-            singleLoading ? <p className='total-center'>Loading...</p> : 
+            loading ? <p className='total-center'>Loading...</p> : 
             <div className='container grid grid-two-column'>
               <div className='total-center'>
                 <ProductImage image={image} />

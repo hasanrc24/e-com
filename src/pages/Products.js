@@ -6,16 +6,18 @@ import Sort from '../components/Sort';
 
 const Products = () => {
   return (
-    <Section className='container grid grid-filter'>
-      <div >
-        <Filter />
-      </div>
-      <div>
-        <div>
-          <Sort />
+    <Section>
+      <div className='prd'>
+        <div >
+          <Filter />
         </div>
         <div>
-          <ProductList />
+          <div>
+            <Sort />
+          </div>
+          <div>
+            <ProductList />
+          </div>
         </div>
       </div>
     </Section>
@@ -23,8 +25,18 @@ const Products = () => {
 };
 
 const Section = styled.section`
-  max-width: 72%;
-  grid-template-columns: .3fr 1fr;
+  margin: auto;
+  width: 71%;
+  .prd{
+    display: grid;
+    grid-template-columns: .2fr 1fr;
+    gap: 1rem !important;
+  }
+  @media(max-width: ${({theme}) => theme.media.mobile}){
+    .prd{
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 `
 
 export default Products

@@ -11,11 +11,14 @@ const productReducer = (state, action) =>{
         })
         return {...state, loading: false, products: action.payload, featuredProducts: featuredProducts}
     }
-    if(action.type === "SINGLE_LOADING"){
-        return {...state, singleLoading: true}
-    }
     if(action.type === "SINGLE_PRODUCT"){
         return {...state, singleLoading: false, singleProduct: action.payload}
+    }
+    if(action.type === 'SET_GRID'){
+        return {...state, gridView: true}
+    }
+    if(action.type === 'SET_LIST'){
+        return {...state, gridView: false}
     }
 
     return state;

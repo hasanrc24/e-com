@@ -5,8 +5,12 @@ import styled from 'styled-components';
 const Product = ({product}) => {
     
     const {id, image, name, price, category} = product;
+    const url = window.location.pathname;
+
+    const compare = url === "/products";
+    const gray = compare ? "#F6F8FA" : "white";
   return (
-      <Wrapper className='total-center'>
+      <Wrapper className='total-center' style={{backgroundColor: gray}}>
             <Link to={`/singleproduct/${id}`} className="prod-link">
                 <figure>
                     <img src={image} alt={product.id} />
@@ -22,7 +26,6 @@ const Product = ({product}) => {
 };
 
 const Wrapper = styled.div`
-    background-color: white;
     height: 13rem;
     width: 16rem;
     text-decoration: none !important;

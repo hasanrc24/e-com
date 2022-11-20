@@ -1,19 +1,20 @@
 import React from 'react'
 import styled from 'styled-components';
-import { useProduct } from '../context/productContext'
-import Product from './Product';
+import { useProduct } from '../context/productContext';
+import GridView from './GridView';
+import ListView from './ListView';
 
 const ProductList = () => {
 
-    const {products} = useProduct();
-    console.log(products)
+    const {products, gridView} = useProduct();
   return (
     <Section>
-        <div className='grid grid-three-column'>
+      {
+        (products?.length === 0) && <p>Loading...</p> 
+      }
+        <div>
             {
-                products?.map((curProduct) => {
-                    return <Product product={curProduct} key={curProduct.id} />
-                })
+                gridView === true ? <GridView products={products} /> : <ListView products={products} />
             }
         </div>
     </Section>
@@ -21,14 +22,7 @@ const ProductList = () => {
 };
 
 const Section = styled.section`
-    .grid{
-        gap: 5px;
-    }
-    @media(max-width: ${({theme}) => theme.media.mobile}){
-        .grid-three-column{
-            grid-template-columns: repeat(1,1fr);
-        }
-    }
+    
 `
 
 export default ProductList
