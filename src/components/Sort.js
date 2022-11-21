@@ -5,9 +5,8 @@ import { useProduct } from '../context/productContext';
 
 const Sort = () => {
 
-  const {setGridView, setListView, gridView, toFilterProducts, setSort, sortBy} = useProduct();
+  const {setGridView, setListView, gridView, toFilterProducts, setSort} = useProduct();
 
-console.log(sortBy)
   return (
     <Wrapper>
       <div className='left-sort'>

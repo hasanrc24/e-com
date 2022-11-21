@@ -13,8 +13,15 @@ const initialState = {
     featuredProducts: [],
     singleProduct: {},
     toFilterProducts: [],
+    allCopyProducts: [],
     gridView: true,
     sortBy: "",
+    filters: {
+        search: "",
+        category: "all",
+        company: "all",
+        colors: "all"
+    },
 }
 
 const ContextProvider = ({children}) => {
@@ -32,7 +39,7 @@ const ContextProvider = ({children}) => {
     };
     
     const getSingleProduct = async (url) =>{
-        dispatch({type: "SINGLE_LOADING"});
+        dispatch({type: "LOADING"});
         try {
             const {data} = await axios.get(url);
             dispatch({type: "SINGLE_PRODUCT", payload: data});
@@ -51,16 +58,23 @@ const ContextProvider = ({children}) => {
         dispatch({type: "SORT_BY", payload: e.target.value});
     };
 
+    const handleFilter = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        return dispatch({type: "FILTER", payload: {name, value}})
+    }
+
     useEffect(() => {
         dispatch({type: "GET_SORTED"});
-    }, [state.sortBy]);
+        dispatch({type: "GET_FILTER"});
+    }, [state.sortBy, state.filters]);
 
     useEffect(() => {
         getProducts(url);
     }, []);
 
     return (
-        <ProductContext.Provider value={{...state, getSingleProduct, setGridView, setListView, setSort}}>
+        <ProductContext.Provider value={{...state, getSingleProduct, setGridView, setListView, setSort, handleFilter}}>
             {children}
         </ProductContext.Provider>
     );
