@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components';
 import Product from './Product';
 
-const GridView = ({products}) => {
+const GridView = ({toFilterProducts}) => {
   return (
     <Section>
       <div className='grid grid-three-column prod-bg'>
             {
-                products?.map((curProduct) => {
+                toFilterProducts?.map((curProduct) => {
                     return <Product product={curProduct} key={curProduct.id} />
                 })
             }

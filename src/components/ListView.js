@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ListView = ({products}) => {
+const ListView = ({toFilterProducts}) => {
 
-  console.log(products)
+  console.log(toFilterProducts)
   return (
     <Section>
       {
-        products.map((curProd) => {
+        toFilterProducts?.map((curProd) => {
           const {name, description, image, price, id} = curProd;
           return (<div key={id} className="list-elem">
             <figure>
@@ -16,7 +16,7 @@ const ListView = ({products}) => {
             </figure>
             <div className='list-info'>
               <h4>{name}</h4>
-              <span>{price}</span>
+              <span>{price/100}</span>
               <p>{description.slice(0, 97)}...</p>
               <Link to={`/singleproduct/${id}`} className="btn">read more</Link>
             </div>

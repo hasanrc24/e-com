@@ -12,12 +12,14 @@ const initialState = {
     products: [],
     featuredProducts: [],
     singleProduct: {},
+    toFilterProducts: [],
     gridView: true,
+    sortBy: "",
 }
 
 const ContextProvider = ({children}) => {
 
-    const [state, dispatch] = useReducer(productReducer, initialState)
+    const [state, dispatch] = useReducer(productReducer, initialState);
 
     const getProducts = async (url) =>{
             dispatch({type: "LOADING"})
@@ -27,7 +29,7 @@ const ContextProvider = ({children}) => {
         } catch (error) {
             dispatch({type: "ERROR"})
         }
-    }
+    };
     
     const getSingleProduct = async (url) =>{
         dispatch({type: "SINGLE_LOADING"});
@@ -37,21 +39,28 @@ const ContextProvider = ({children}) => {
         } catch (error) {
             dispatch({type: "ERROR"});
         }
-    }
+    };
 
     const setGridView = () => {
         dispatch({type: "SET_GRID"});
-    }
+    };
     const setListView = () => {
         dispatch({type: "SET_LIST"});
-    }
+    };
+    const setSort = (e) =>{
+        dispatch({type: "SORT_BY", payload: e.target.value});
+    };
+
+    useEffect(() => {
+        dispatch({type: "GET_SORTED"});
+    }, [state.sortBy]);
 
     useEffect(() => {
         getProducts(url);
     }, []);
 
     return (
-        <ProductContext.Provider value={{...state, getSingleProduct, setGridView, setListView}}>
+        <ProductContext.Provider value={{...state, getSingleProduct, setGridView, setListView, setSort}}>
             {children}
         </ProductContext.Provider>
     );

@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { IoGridSharp, IoList } from 'react-icons/io5';
 import { useProduct } from '../context/productContext';
 
 const Sort = () => {
 
-  const {setGridView, setListView, gridView, products} = useProduct();
+  const {setGridView, setListView, gridView, toFilterProducts, setSort, sortBy} = useProduct();
 
+console.log(sortBy)
   return (
     <Wrapper>
       <div className='left-sort'>
         <IoGridSharp className={gridView === true ? "sort-icon active" : "sort-icon"} onClick={()=> setGridView()} />
         <IoList className={gridView === false ? "sort-icon active" : "sort-icon"} onClick={()=> setListView()} />
       </div>
-      <div className='length'>{products.length} Total products</div>
+      <div className='length'>{toFilterProducts?.length} Total products</div>
       <div>
-        <select>
-          <option>Lowest</option>
-          <option>Highest</option>
+        <select id="sort-id" onClick={setSort}>
+          <option value="highest">Price (highest)</option>
+          <option value="lowest">Price (lowest)</option>
+          <option value="a-z">a-z</option>
+          <option value="z-a">z-a</option>
         </select>
       </div>
     </Wrapper>

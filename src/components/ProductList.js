@@ -6,15 +6,16 @@ import ListView from './ListView';
 
 const ProductList = () => {
 
-    const {products, gridView} = useProduct();
+    const {toFilterProducts, gridView} = useProduct();
+    // console.log(toFilterProducts);
   return (
     <Section>
       {
-        (products?.length === 0) && <p>Loading...</p> 
+        (toFilterProducts?.length === 0) && <p>Loading...</p> 
       }
         <div>
             {
-                gridView === true ? <GridView products={products} /> : <ListView products={products} />
+                gridView === true ? <GridView toFilterProducts={toFilterProducts} /> : <ListView toFilterProducts={toFilterProducts} />
             }
         </div>
     </Section>
