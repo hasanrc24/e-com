@@ -20,7 +20,9 @@ const initialState = {
         search: "",
         category: "all",
         company: "all",
-        colors: "all"
+        colors: "all",
+        price: 0,
+        maxPrice: 0,
     },
 }
 
@@ -63,6 +65,9 @@ const ContextProvider = ({children}) => {
         let value = e.target.value;
         return dispatch({type: "FILTER", payload: {name, value}})
     }
+    const handleClearFilter = () =>{
+        dispatch({type: "CLEAR_FILTER"});
+    }
 
     useEffect(() => {
         dispatch({type: "GET_SORTED"});
@@ -74,7 +79,7 @@ const ContextProvider = ({children}) => {
     }, []);
 
     return (
-        <ProductContext.Provider value={{...state, getSingleProduct, setGridView, setListView, setSort, handleFilter}}>
+        <ProductContext.Provider value={{...state, getSingleProduct, setGridView, setListView, setSort, handleFilter, handleClearFilter}}>
             {children}
         </ProductContext.Provider>
     );

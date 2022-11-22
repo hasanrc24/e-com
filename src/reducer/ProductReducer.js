@@ -6,10 +6,15 @@ const productReducer = (state, action) =>{
         return {...state, loading: false, singleLoading: false, error: true}
     }
     if(action.type === "PRODUCTS"){
+
+        let toFilter = [...state.products];
+        const allPrices = toFilter.map((curElem) => curElem.price);
+        const maxPrice = Math.max(...allPrices);
+
         const featuredProducts = action.payload.filter((products) => {
             return products.featured === true;
         })
-        return {...state, loading: false, products: action.payload, featuredProducts: featuredProducts, toFilterProducts: [...action.payload], allCopyProducts: [...action.payload]}
+        return {...state, loading: false, products: action.payload, filters: {...state.filters, maxPrice: maxPrice/100, price: maxPrice/100}, featuredProducts: featuredProducts, toFilterProducts: [...action.payload], allCopyProducts: [...action.payload]}
     }
     if(action.type === "SINGLE_PRODUCT"){
         return {...state, loading: false, singleProduct: action.payload}
@@ -52,8 +57,10 @@ const productReducer = (state, action) =>{
         }}
     }
     if(action.type === "GET_FILTER"){
+
         let toFilter = [...state.allCopyProducts];
-        const {search, category, company, colors} = state.filters;
+
+        const {search, category, company, colors, price} = state.filters;
         if(search){
             toFilter = toFilter.filter((curElem) => {
                 return curElem.name.toLowerCase().includes(search);
@@ -70,11 +77,26 @@ const productReducer = (state, action) =>{
             })
         }
         if(colors.toLowerCase() !== "all"){
-            toFilter = toFilter.filter((curElem) =>{
-                return curElem.colors.includes(colors);
-            })
+            toFilter = toFilter.filter((curElem) => curElem.colors.includes(colors) )
+        }
+        if(price){
+            toFilter = toFilter.filter((curElem) => {
+                console.log(curElem.price, price)
+                return curElem.price/100 <= price;
+            } )
         }
         return {...state, toFilterProducts: toFilter}
+    }
+    if(action.type === 'CLEAR_FILTER'){
+        return {...state, filters: {
+            ...state.filters,
+            search: "",
+            category: "all",
+            company: "all",
+            colors: "all",
+            maxPrice: state.filters.maxPrice,
+            price: state.filters.maxPrice,
+        }}
     }
 
     return state;

@@ -5,8 +5,9 @@ import { GoCheck } from 'react-icons/go';
 
 const Filter = () => {
 
-  const {handleFilter, filters:{search, colors}, allCopyProducts} = useProduct();
+  const {handleFilter, filters:{search, colors, price, maxPrice, category}, allCopyProducts, handleClearFilter} = useProduct();
 
+  console.log(maxPrice, price)
   const prodCategory = (data, property) => {
     let cat = data.map((curProd) =>{
       return curProd[property];
@@ -21,6 +22,7 @@ const Filter = () => {
   const companies = prodCategory(allCopyProducts, "company");
   const colorsData = prodCategory(allCopyProducts, "colors");
 
+
   return (
     <Section>
       <form onSubmit={(e)=> e.preventDefault()}>
@@ -31,7 +33,7 @@ const Filter = () => {
         <h3 className='category-title'>Categories</h3>
         {
           categories?.map((curCat, i) => {
-            return <button type="button" key={i} className='cat-btn' name="category" value={curCat} onClick={handleFilter}>{curCat}</button>
+            return <button type="button" key={i} className={category === curCat ? 'cat-btn active' : 'cat-btn'} name="category" value={curCat} onClick={handleFilter}>{curCat}</button>
           })
         }
       </div>
@@ -57,6 +59,15 @@ const Filter = () => {
           }
         </div>
       </div>
+
+      <div className='category'>
+          <h3 className='category-title'>Price</h3>
+          <h4>{'\u09F3'} {price}</h4>
+          <input type="range" name="price" value={price} min="0" max={maxPrice} onChange={handleFilter} />
+      </div>
+      <div className='category'>
+          <button className='btn' onClick={handleClearFilter}>Clear filters</button>
+      </div>
     </Section>
   )
 };
@@ -81,6 +92,7 @@ const Section = styled.section`
         background-color: white;
         text-align: left;
         font-size: 15px;
+        text-transform: capitalize;
       }
       .active{
         font-weight: bold;
@@ -100,6 +112,9 @@ const Section = styled.section`
         background-color: inherit;
         border: none;
         cursor: pointer;
+      }
+      .btn{
+        width: 9rem;
       }
   }
   @media(max-width: ${({theme}) => theme.media.mobile}){
