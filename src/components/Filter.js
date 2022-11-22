@@ -7,7 +7,6 @@ const Filter = () => {
 
   const {handleFilter, filters:{search, colors, price, maxPrice, category}, allCopyProducts, handleClearFilter} = useProduct();
 
-  console.log(maxPrice, price)
   const prodCategory = (data, property) => {
     let cat = data.map((curProd) =>{
       return curProd[property];

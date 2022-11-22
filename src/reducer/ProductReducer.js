@@ -81,7 +81,6 @@ const productReducer = (state, action) =>{
         }
         if(price){
             toFilter = toFilter.filter((curElem) => {
-                console.log(curElem.price, price)
                 return curElem.price/100 <= price;
             } )
         }

@@ -32,7 +32,7 @@ const SingleProduct = () => {
                 <h5>Available: {stock > 0 ? "In Stock" : "Not Available"}</h5>
                 <h5 >Brand: {company}</h5>
                 <hr />
-                {stock > 0 && <AddToCart colors={colors} stock={stock} />}
+                {stock > 0 && <AddToCart id={id} colors={colors} stock={stock} singleProduct={singleProduct} />}
               </div>
             </div>
         }

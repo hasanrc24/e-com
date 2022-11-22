@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { CartContextProvider } from './context/cartContext';
 import { ContextProvider } from './context/productContext';
 import reportWebVitals from './reportWebVitals';
 
@@ -8,7 +9,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
       <ContextProvider>
-        <App />
+        <CartContextProvider>
+          <App />
+        </CartContextProvider>
       </ContextProvider>
     </React.StrictMode>
 );
