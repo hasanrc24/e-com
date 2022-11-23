@@ -6,8 +6,7 @@ import { useCartContext } from '../context/cartContext';
 
 const Cart = () => {
 
-  const {cart} = useCartContext();
-  console.log(cart);
+  const {cart, handleClearCart} = useCartContext();
 
   const titles = ["Item", "Price", "Quantity", "Subtotal", "Remove"];
 
@@ -30,6 +29,11 @@ const Cart = () => {
             })
           }
         </div>
+        <hr />  
+        <div className='flex justify-between'>
+          <Link to="/products" className='btn'>continue shopping</Link>
+          <button className='btn clr' onClick={handleClearCart}>clear cart</button>
+        </div>
       </div>
       }
       
@@ -51,6 +55,9 @@ const Section = styled.section`
     height: 1rem;
     width: 1rem;
     border-radius: 50%;
+  }
+  .clr{
+    background-color: #e31626;
   }
 `
 

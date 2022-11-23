@@ -2,10 +2,13 @@ import React from 'react'
 import styled from 'styled-components';
 import {AiFillDelete} from 'react-icons/ai';
 import ProductQuantity from './ProductQuantity';
+import { useCartContext } from '../context/cartContext';
 
 const CartItem = ({cart}) => {
 
     const {name, image, color, price, quantity, id} = cart;
+    const {handleRemoveItem} = useCartContext();
+    
   return (
     <Wrapper className=''>
         <div className='flex'>
@@ -25,7 +28,7 @@ const CartItem = ({cart}) => {
             <p>{quantity * price/100}</p>
         </div>
         <div className='cart-del-icon'>
-            <AiFillDelete  className='cart-del-icon' />
+            <AiFillDelete className='cart-del-icon' onClick={() => handleRemoveItem(id)} />
         </div>
     </Wrapper>
   )
@@ -42,7 +45,7 @@ const Wrapper = styled.div`
     }
     .cart-del-icon{
         font-size: 20px;
-        color: red;
+        color: #e31626;
         cursor: pointer;
     }
     .color-gap{

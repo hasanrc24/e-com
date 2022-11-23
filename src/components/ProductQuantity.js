@@ -5,7 +5,6 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 const ProductQuantity = ({setIncrease, setDecrease, quantity}) => {
 
   const location = window.location.pathname;
-  console.log(location)
   return(<Wrapper>
     <div className={location === '/cart' ? "quantity-mod" : "quantity-mod marg"}>
       <button onClick={() => setDecrease()}><AiOutlineMinus /></button>
