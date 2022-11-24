@@ -25,7 +25,7 @@ const AddToCart = ({id, colors, stock, singleProduct}) => {
             })
         }</div>
         <ProductQuantity quantity={quantity} setDecrease={setDecrease} setIncrease={setIncrease} />
-        <Link to="/cart" className='btn' onClick={() => addToCart(id, selectColor, quantity, singleProduct, setDecrease, setIncrease)}>add to cart</Link>
+        <button className='btn' onClick={() => addToCart(id, selectColor, quantity, singleProduct)}>add to cart</button>
     </Wrapper>
   )
 };

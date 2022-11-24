@@ -7,6 +7,8 @@ const CartContext = createContext();
 
 const initialState = {
     cart: JSON.parse(localStorageCart) !== [] && JSON.parse(localStorageCart),
+    subtotal: '',
+    shipping: 50,
 }
 const CartContextProvider = ({children}) => {
 
@@ -22,12 +24,21 @@ const CartContextProvider = ({children}) => {
         dispatch({type: "CLEAR_CART"})
     }
 
+    const setIncrease = (id) => {
+        dispatch({type: "SET_INCREASE", payload: id})
+    }
+
+    const setDecrease = (id) => {
+        dispatch({type: "SET_DECREASE", payload: id})
+    }
+
     useEffect(() => {
-        localStorage.setItem("cartData", JSON.stringify(state.cart))
+        localStorage.setItem("cartData", JSON.stringify(state.cart));
+        dispatch({type: "SUBTOTAL"});
     }, [state.cart]);
     
 
-    return <CartContext.Provider value={{...state, addToCart, handleRemoveItem, handleClearCart}}>
+    return <CartContext.Provider value={{...state, addToCart, handleRemoveItem, handleClearCart, setIncrease, setDecrease}}>
         {children}
     </CartContext.Provider>
 };

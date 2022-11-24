@@ -6,7 +6,7 @@ import { useCartContext } from '../context/cartContext';
 
 const Cart = () => {
 
-  const {cart, handleClearCart} = useCartContext();
+  const {cart, handleClearCart, subtotal, shipping} = useCartContext();
 
   const titles = ["Item", "Price", "Quantity", "Subtotal", "Remove"];
 
@@ -34,6 +34,24 @@ const Cart = () => {
           <Link to="/products" className='btn'>continue shopping</Link>
           <button className='btn clr' onClick={handleClearCart}>clear cart</button>
         </div>
+        <div className='flex justify-between'>
+            <div></div>
+            <div className='fee-right'>
+              <div className='flex justify-between'>
+                <p>Subtotal: </p>
+                <p>{subtotal/100}</p>
+              </div>
+              <div className='flex justify-between mid'>
+                <p>Shipping fee: </p>
+                <p>{shipping}</p>
+              </div>
+              <hr />
+              <div className='flex justify-between'>
+                <p>Total cost: </p>
+                <p>{shipping+subtotal/100}</p>
+              </div>
+            </div>
+        </div>
       </div>
       }
       
@@ -59,6 +77,15 @@ const Section = styled.section`
   .clr{
     background-color: #e31626;
   }
+    .fee-right{
+      background-color: ${({theme}) => theme.colors.bg};
+      margin: 2rem 0 0 0;
+      padding: 1rem;
+      width: 13rem;
+      .mid{
+        margin: 8px 0;
+      }
+    }
 `
 
 export default Cart;

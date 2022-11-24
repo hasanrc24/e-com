@@ -7,7 +7,7 @@ import { useCartContext } from '../context/cartContext';
 const CartItem = ({cart}) => {
 
     const {name, image, color, price, quantity, id} = cart;
-    const {handleRemoveItem} = useCartContext();
+    const {handleRemoveItem, setDecrease, setIncrease} = useCartContext();
     
   return (
     <Wrapper className=''>
@@ -22,7 +22,7 @@ const CartItem = ({cart}) => {
             <p>{price/100}</p>
         </div>
         <div className='total-center'>
-            <ProductQuantity quantity={quantity} />
+            <ProductQuantity quantity={quantity} setIncrease={() => setIncrease(id)} setDecrease={() => setDecrease(id)} />
         </div>
         <div>
             <p>{quantity * price/100}</p>
