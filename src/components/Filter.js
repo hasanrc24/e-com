@@ -61,7 +61,7 @@ const Filter = () => {
 
       <div className='category'>
           <h3 className='category-title'>Price</h3>
-          <h4>{'\u09F3'} {price}</h4>
+          <h4>${price}</h4>
           <input type="range" name="price" value={price} min="0" max={maxPrice} onChange={handleFilter} />
       </div>
       <div className='category'>

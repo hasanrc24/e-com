@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import FormatPrice from './FormatPrice';
 
 const ListView = ({toFilterProducts}) => {
 
@@ -16,7 +17,7 @@ const ListView = ({toFilterProducts}) => {
             </figure>
             <div className='list-info'>
               <h4>{name}</h4>
-              <span>{price/100}</span>
+              <span><FormatPrice price={price} /></span>
               <p>{description.slice(0, 97)}...</p>
               <Link to={`/singleproduct/${id}`} className="btn">read more</Link>
             </div>

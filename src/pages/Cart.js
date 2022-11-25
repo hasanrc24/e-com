@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import CartItem from '../components/CartItem';
+import FormatPrice from '../components/FormatPrice';
 import { useCartContext } from '../context/cartContext';
 
 const Cart = () => {
@@ -39,16 +40,16 @@ const Cart = () => {
             <div className='fee-right'>
               <div className='flex justify-between'>
                 <p>Subtotal: </p>
-                <p>{subtotal/100}</p>
+                <p><FormatPrice price={subtotal} /></p>
               </div>
               <div className='flex justify-between mid'>
                 <p>Shipping fee: </p>
-                <p>{shipping}</p>
+                <p><FormatPrice price={shipping} /></p>
               </div>
               <hr />
               <div className='flex justify-between'>
                 <p>Total cost: </p>
-                <p>{shipping+subtotal/100}</p>
+                <p><FormatPrice price={shipping+subtotal} /></p>
               </div>
             </div>
         </div>

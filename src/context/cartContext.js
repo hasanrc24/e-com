@@ -8,7 +8,7 @@ const CartContext = createContext();
 const initialState = {
     cart: JSON.parse(localStorageCart) !== [] && JSON.parse(localStorageCart),
     subtotal: '',
-    shipping: 50,
+    shipping: 5000,
 }
 const CartContextProvider = ({children}) => {
 

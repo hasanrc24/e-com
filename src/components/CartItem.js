@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {AiFillDelete} from 'react-icons/ai';
 import ProductQuantity from './ProductQuantity';
 import { useCartContext } from '../context/cartContext';
+import FormatPrice from './FormatPrice';
 
 const CartItem = ({cart}) => {
 
@@ -19,13 +20,13 @@ const CartItem = ({cart}) => {
             </div>
         </div>
         <div>
-            <p>{price/100}</p>
+            <p><FormatPrice price={price} /></p>
         </div>
         <div className='total-center'>
             <ProductQuantity quantity={quantity} setIncrease={() => setIncrease(id)} setDecrease={() => setDecrease(id)} />
         </div>
         <div>
-            <p>{quantity * price/100}</p>
+            <p><FormatPrice price={quantity * price} /></p>
         </div>
         <div className='cart-del-icon'>
             <AiFillDelete className='cart-del-icon' onClick={() => handleRemoveItem(id)} />

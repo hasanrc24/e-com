@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import FormatPrice from './FormatPrice';
 
 const Product = ({product}) => {
     
@@ -18,7 +19,7 @@ const Product = ({product}) => {
                 </figure>
                 <div className='flex justify-between details'>
                     <p>{name}</p>
-                    <p><span>{'\u09F3'} </span>{price/100}</p>
+                    <p><FormatPrice price={price} /></p>
                 </div>
             </Link>
         </Wrapper>

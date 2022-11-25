@@ -14,7 +14,7 @@ const productReducer = (state, action) =>{
         const featuredProducts = action.payload.filter((products) => {
             return products.featured === true;
         })
-        return {...state, loading: false, products: action.payload, filters: {...state.filters, maxPrice: maxPrice/100, price: maxPrice/100}, featuredProducts: featuredProducts, toFilterProducts: [...action.payload], allCopyProducts: [...action.payload]}
+        return {...state, loading: false, products: action.payload, filters: {...state.filters, maxPrice: maxPrice/1000, price: maxPrice/1000}, featuredProducts: featuredProducts, toFilterProducts: [...action.payload], allCopyProducts: [...action.payload]}
     }
     if(action.type === "SINGLE_PRODUCT"){
         return {...state, loading: false, singleProduct: action.payload}
@@ -81,7 +81,7 @@ const productReducer = (state, action) =>{
         }
         if(price){
             toFilter = toFilter.filter((curElem) => {
-                return curElem.price/100 <= price;
+                return curElem.price/1000 <= price;
             } )
         }
         return {...state, toFilterProducts: toFilter}
