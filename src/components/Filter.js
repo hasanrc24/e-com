@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useProduct } from "../context/productContext";
 import { GoCheck } from "react-icons/go";
-import FormatPrice from "./FormatPrice";
 
 const Filter = () => {
   const {

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { AiFillDelete } from "react-icons/ai";
 import ProductQuantity from "./ProductQuantity";
 import { useCartContext } from "../context/cartContext";
-import FormatPrice from "./FormatPrice";
 
 const CartItem = ({ cart }) => {
   const { name, image, color, price, quantity, id } = cart;

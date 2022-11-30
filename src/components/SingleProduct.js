@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useProduct } from "../context/productContext";
 import AddToCart from "./AddToCart";
-import FormatPrice from "./FormatPrice";
 import ProductImage from "./ProductImage";
 import Star from "./Star";
 
@@ -17,7 +16,6 @@ const SingleProduct = () => {
     description,
     name,
     image,
-    id: alias,
     price,
     reviews,
     stars,
@@ -26,7 +24,7 @@ const SingleProduct = () => {
   } = singleProduct;
   useEffect(() => {
     getSingleProduct(`${api}?id=${id}`);
-  }, []);
+  }, [getSingleProduct, id]);
 
   console.log(name, price, "single");
 

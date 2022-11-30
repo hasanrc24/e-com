@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import FormatPrice from "./FormatPrice";
 
 const Product = ({ product }) => {
   const { id, image, name, price, category } = product;
