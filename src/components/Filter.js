@@ -104,9 +104,7 @@ const Filter = () => {
 
       <div className="category">
         <h3 className="category-title">Price</h3>
-        <h4>
-          <FormatPrice price={price} />
-        </h4>
+        <h4>${price}</h4>
         <input
           type="range"
           name="price"

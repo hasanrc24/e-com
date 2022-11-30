@@ -13,14 +13,15 @@ const productReducer = (state, action) => {
     const featuredProducts = action.payload.filter((products) => {
       return products.featured === true;
     });
+    console.log(state.products);
     return {
       ...state,
       loading: false,
       products: action.payload,
       filters: {
         ...state.filters,
-        maxPrice: maxPrice.toFixed(2),
-        price: maxPrice.toFixed(2),
+        maxPrice: maxPrice / 1000,
+        price: maxPrice / 1000,
       },
       featuredProducts: featuredProducts,
       toFilterProducts: [...action.payload],
@@ -41,7 +42,7 @@ const productReducer = (state, action) => {
   }
   if (action.type === "GET_SORTED") {
     let sortedValue;
-    const { toFilterProducts, sortBy } = state;
+    const { allCopyProducts, sortBy } = state;
 
     function sorting(a, b) {
       if (sortBy === "highest") {
@@ -57,7 +58,7 @@ const productReducer = (state, action) => {
         return b.name.localeCompare(a.name);
       }
     }
-    sortedValue = [...toFilterProducts].sort(sorting);
+    sortedValue = [...allCopyProducts].sort(sorting);
 
     return { ...state, toFilterProducts: sortedValue };
   }
@@ -72,7 +73,7 @@ const productReducer = (state, action) => {
     };
   }
   if (action.type === "GET_FILTER") {
-    let toFilter = [...state.allCopyProducts];
+    let toFilter = [...state.toFilterProducts];
 
     const { search, category, company, colors, price } = state.filters;
     if (search) {
