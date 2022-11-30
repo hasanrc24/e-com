@@ -22,7 +22,7 @@ const Cart = () => {
       ) : (
         <div>
           <div className="grid grid-five-column total-center">
-            {titles.map((curTitle, i) => {
+            {titles?.map((curTitle, i) => {
               return (
                 <p className="title" key={i}>
                   {curTitle}
@@ -32,7 +32,7 @@ const Cart = () => {
           </div>
           <hr />
           <div>
-            {cart.map((curElem) => {
+            {cart?.map((curElem) => {
               return <CartItem cart={curElem} key={curElem.id} />;
             })}
           </div>

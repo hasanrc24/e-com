@@ -6,7 +6,7 @@ const cartReducer = (state, action) => {
       (curElem) => curElem.id === id + selectColor
     );
     if (duplicateProduct) {
-      let updatedCart = state.cart.map((curItem) => {
+      let updatedCart = state?.cart?.map((curItem) => {
         if (curItem.id === id + selectColor) {
           let newQuantity = curItem.quantity + quantity;
           if (newQuantity >= singleProduct.stock) {
@@ -43,7 +43,7 @@ const cartReducer = (state, action) => {
     return { ...state, cart: [] };
   }
   if (action.type === "SET_INCREASE") {
-    let updatedCart = state.cart.map((curElem) => {
+    let updatedCart = state?.cart?.map((curElem) => {
       if (curElem.id === action.payload) {
         let newQuantity = curElem.quantity + 1;
         if (newQuantity >= curElem.stock) {
@@ -57,7 +57,7 @@ const cartReducer = (state, action) => {
     return { ...state, cart: updatedCart };
   }
   if (action.type === "SET_DECREASE") {
-    let updatedCart = state.cart.map((curElem) => {
+    let updatedCart = state?.cart?.map((curElem) => {
       if (curElem.id === action.payload) {
         let newQuantity = curElem.quantity - 1;
         if (newQuantity <= 1) {

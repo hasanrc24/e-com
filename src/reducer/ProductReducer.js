@@ -7,7 +7,7 @@ const productReducer = (state, action) => {
   }
   if (action.type === "PRODUCTS") {
     let toFilter = [...state.products];
-    const allPrices = toFilter.map((curElem) => curElem.price);
+    const allPrices = toFilter?.map((curElem) => curElem.price);
     const maxPrice = Math.max(...allPrices);
 
     const featuredProducts = action.payload.filter((products) => {

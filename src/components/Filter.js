@@ -12,7 +12,7 @@ const Filter = () => {
   } = useProduct();
 
   const prodCategory = (data, property) => {
-    let cat = data.map((curProd) => {
+    let cat = data?.map((curProd) => {
       return curProd[property];
     });
     if (property === "colors") {
