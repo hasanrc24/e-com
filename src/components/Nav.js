@@ -1,55 +1,56 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
-import { useCartContext } from '../context/cartContext';
+import { useCartContext } from "../context/cartContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Nav = () => {
+  const [menuIcon, setMenuIcon] = useState();
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
-    const [menuIcon, setMenuIcon] = useState();
-
-const Nav = styled.nav`
+  const Nav = styled.nav`
     .navbar-lists {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-        list-style: none;
-        .navbar-link {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      list-style: none;
+      .navbar-link {
         &:link,
         &:visited {
-            display: inline-block;
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: ${({ theme }) => theme.colors.black};
-            transition: color 0.3s linear;
+          display: inline-block;
+          text-decoration: none;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          color: ${({ theme }) => theme.colors.black};
+          transition: color 0.3s linear;
         }
         &:hover,
         &:active {
-            color: ${({ theme }) => theme.colors.helper};
+          color: ${({ theme }) => theme.colors.helper};
         }
-        }
+      }
     }
     .mobile-navbar-btn {
-        display: none;
-        background-color: transparent;
-        cursor: pointer;
-        border: none;
+      display: none;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
     }
     .mobile-nav-icon[name="close-outline"] {
-        display: none;
+      display: none;
     }
     .close-outline {
-        display: none;
+      display: none;
     }
     .cart-trolley--link {
-        position: relative;
-        .cart-trolley {
+      position: relative;
+      .cart-trolley {
         position: relative;
         font-size: 1rem;
-        }
-        .cart-total--item {
+      }
+      .cart-total--item {
         width: 1rem;
         height: 1rem;
         font-size: 0.7rem;
@@ -62,27 +63,27 @@ const Nav = styled.nav`
         top: -20%;
         left: 70%;
         background-color: ${({ theme }) => theme.colors.helper};
-        }
+      }
     }
     .user-login--name {
-        text-transform: capitalize;
+      text-transform: capitalize;
     }
     .user-logout,
     .user-login {
-        font-size: 1rem;
-        padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      padding: 0.8rem 1.4rem;
     }
     @media (max-width: ${({ theme }) => theme.media.mobile}) {
-        .mobile-navbar-btn {
+      .mobile-navbar-btn {
         display: inline-block;
         z-index: 9999;
         border: ${({ theme }) => theme.colors.black};
         .mobile-nav-icon {
-            font-size: 2rem;
-            color: ${({ theme }) => theme.colors.black};
+          font-size: 2rem;
+          color: ${({ theme }) => theme.colors.black};
         }
-        }
-        .active .mobile-nav-icon {
+      }
+      .active .mobile-nav-icon {
         display: none;
         font-size: 2rem;
         position: absolute;
@@ -90,11 +91,11 @@ const Nav = styled.nav`
         right: 10%;
         color: ${({ theme }) => theme.colors.black};
         z-index: 9999;
-        }
-        .active .close-outline {
+      }
+      .active .close-outline {
         display: inline-block;
-        }
-        .navbar-lists {
+      }
+      .navbar-lists {
         width: 100vw;
         height: 100vh;
         position: absolute;
@@ -108,47 +109,48 @@ const Nav = styled.nav`
         visibility: hidden;
         opacity: 0;
         transform: translateY(-100%);
-        }
-        .active .navbar-lists {
+      }
+      .active .navbar-lists {
         visibility: visible;
         opacity: 1;
         transform: translateY(0);
         z-index: 999;
         transform-origin: top;
         .navbar-link {
-            font-size: 1rem;
+          font-size: 1rem;
         }
-        }
-        .cart-trolley--link {
+      }
+      .cart-trolley--link {
         position: relative;
         .cart-trolley {
-            position: relative;
-            font-size: 1.3rem;
+          position: relative;
+          font-size: 1.3rem;
         }
         .cart-total--item {
-            width: 1.1rem;
-            height: 1.1rem;
-            font-size: 0.8rem;
+          width: 1.1rem;
+          height: 1.1rem;
+          font-size: 0.8rem;
         }
-        }
-        .user-logout,
-        .user-login {
+      }
+      .user-logout,
+      .user-login {
         font-size: 2.2rem;
         padding: 0.8rem 1.4rem;
-        }
+      }
     }
-`;
+  `;
 
-const {cart} = useCartContext();
+  const { cart } = useCartContext();
   return (
     <Nav>
-        <div className={menuIcon ? "navbar active" : "navbar"}>
+      <div className={menuIcon ? "navbar active" : "navbar"}>
         <ul className="navbar-lists">
           <li>
             <NavLink
               to="/"
               className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
+              onClick={() => setMenuIcon(false)}
+            >
               Home
             </NavLink>
           </li>
@@ -156,7 +158,8 @@ const {cart} = useCartContext();
             <NavLink
               to="/about"
               className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
+              onClick={() => setMenuIcon(false)}
+            >
               About
             </NavLink>
           </li>
@@ -164,7 +167,8 @@ const {cart} = useCartContext();
             <NavLink
               to="/products"
               className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
+              onClick={() => setMenuIcon(false)}
+            >
               Products
             </NavLink>
           </li>
@@ -172,10 +176,24 @@ const {cart} = useCartContext();
             <NavLink
               to="/contact"
               className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
+              onClick={() => setMenuIcon(false)}
+            >
               Contact
             </NavLink>
           </li>
+          {isAuthenticated && <li>{user.nickname}</li>}
+          {isAuthenticated ? (
+            <button
+              className="btn"
+              onClick={() => logout({ returnTo: window.location.origin })}
+            >
+              Logout
+            </button>
+          ) : (
+            <button className="btn" onClick={() => loginWithRedirect()}>
+              Log In
+            </button>
+          )}
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <FiShoppingCart className="cart-trolley" />
@@ -199,9 +217,7 @@ const {cart} = useCartContext();
         </div>
       </div>
     </Nav>
-  )
-}
-
-
+  );
+};
 
 export default Nav;
