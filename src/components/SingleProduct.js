@@ -24,7 +24,8 @@ const SingleProduct = () => {
   } = singleProduct;
   useEffect(() => {
     getSingleProduct(`${api}?id=${id}`);
-  }, [getSingleProduct, id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   console.log(name, price, "single");
 
