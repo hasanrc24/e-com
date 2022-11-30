@@ -71,7 +71,7 @@ const cartReducer = (state, action) => {
     return { ...state, cart: updatedCart };
   }
   if (action.type === "SUBTOTAL") {
-    let totalAmount = state.cart.reduce((value, curElem) => {
+    let totalAmount = state?.cart?.reduce((value, curElem) => {
       value = value + curElem.price * curElem.quantity;
       return value;
     }, 0);
