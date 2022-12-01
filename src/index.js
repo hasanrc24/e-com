@@ -8,7 +8,6 @@ import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-console.log(process.env.REACT_APP_DOMAIN);
 root.render(
   <React.StrictMode>
     <Auth0Provider
