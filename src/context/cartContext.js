@@ -3,10 +3,17 @@ import cartReducer from "../reducer/cartReducer";
 
 const CartContext = createContext();
 
-let localStorageCart = localStorage.getItem("cartData");
+const getCartData = () => {
+  let localStorageCart = localStorage.getItem("cartData");
+  if (localStorageCart === [] || localStorageCart === null) {
+    return [];
+  } else {
+    return JSON.parse(localStorageCart);
+  }
+};
 
 const initialState = {
-  cart: JSON.parse(localStorageCart) !== [] ? JSON.parse(localStorageCart) : [],
+  cart: getCartData(),
   subtotal: "",
   shipping: 5000,
 };

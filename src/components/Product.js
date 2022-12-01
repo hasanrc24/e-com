@@ -5,9 +5,6 @@ import styled from "styled-components";
 const Product = ({ product }) => {
   const { id, image, name, price, category } = product;
   const url = window.location.pathname;
-
-  console.log(name, price);
-
   const compare = url === "/products";
   const gray = compare ? "#F6F8FA" : "white";
   return (
