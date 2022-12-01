@@ -77,25 +77,25 @@ const productReducer = (state, action) => {
 
     const { search, category, company, colors, price } = state.filters;
     if (search) {
-      toFilter = toFilter.filter((curElem) => {
+      toFilter = toFilter?.filter((curElem) => {
         return curElem.name.toLowerCase().includes(search);
       });
     }
     if (category.toLowerCase() !== "all") {
-      toFilter = toFilter.filter((curElem) => {
+      toFilter = toFilter?.filter((curElem) => {
         return curElem.category === category;
       });
     }
     if (company.toLowerCase() !== "all") {
-      toFilter = toFilter.filter((curElem) => {
+      toFilter = toFilter?.filter((curElem) => {
         return curElem.company.toLowerCase() === company.toLowerCase();
       });
     }
     if (colors.toLowerCase() !== "all") {
-      toFilter = toFilter.filter((curElem) => curElem.colors.includes(colors));
+      toFilter = toFilter?.filter((curElem) => curElem.colors.includes(colors));
     }
     if (price) {
-      toFilter = toFilter.filter((curElem) => {
+      toFilter = toFilter?.filter((curElem) => {
         return curElem.price / 1000 <= price;
       });
     }

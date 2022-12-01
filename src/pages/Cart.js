@@ -9,6 +9,7 @@ const Cart = () => {
 
   const titles = ["Item", "Price", "Quantity", "Subtotal", "Remove"];
 
+  console.log(cart);
   return (
     <Section>
       {cart?.length === 0 || cart === null ? (
