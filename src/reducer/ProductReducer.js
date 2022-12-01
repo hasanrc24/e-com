@@ -13,7 +13,8 @@ const productReducer = (state, action) => {
     const featuredProducts = action.payload.filter((products) => {
       return products.featured === true;
     });
-    console.log(state.products);
+
+    console.log(maxPrice);
     return {
       ...state,
       loading: false,
