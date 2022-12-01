@@ -27,7 +27,6 @@ const initialState = {
 
 const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(productReducer, initialState);
-  console.log(state.filters.price, state.filters.maxPrice);
 
   const getProducts = async (url) => {
     dispatch({ type: "LOADING" });

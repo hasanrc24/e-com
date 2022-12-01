@@ -14,7 +14,7 @@ const productReducer = (state, action) => {
       return products.featured === true;
     });
 
-    console.log(maxPrice);
+    console.log(allPrices);
     return {
       ...state,
       loading: false,
