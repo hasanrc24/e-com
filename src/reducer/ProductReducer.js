@@ -6,7 +6,7 @@ const productReducer = (state, action) => {
     return { ...state, loading: false, singleLoading: false, error: true };
   }
   if (action.type === "PRODUCTS") {
-    let toFilter = [...state.products];
+    let toFilter = action.payload;
     const allPrices = toFilter?.map((curElem) => curElem.price);
     const maxPrice = Math.max(...allPrices);
 
@@ -14,7 +14,6 @@ const productReducer = (state, action) => {
       return products.featured === true;
     });
 
-    console.log(allPrices);
     return {
       ...state,
       loading: false,
