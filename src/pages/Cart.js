@@ -11,7 +11,7 @@ const Cart = () => {
 
   return (
     <Section>
-      {cart?.length === 0 ? (
+      {cart?.length === 0 || cart === null ? (
         <div className="total-center">
           Cart is empty <br />
           <br />{" "}

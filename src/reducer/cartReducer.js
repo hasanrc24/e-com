@@ -2,7 +2,7 @@ const cartReducer = (state, action) => {
   if (action.type === "ADD_TO_CART") {
     const { id, selectColor, quantity, singleProduct } = action.payload;
 
-    const duplicateProduct = state.cart.find(
+    const duplicateProduct = state?.cart?.find(
       (curElem) => curElem.id === id + selectColor
     );
     if (duplicateProduct) {
