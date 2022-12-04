@@ -114,7 +114,7 @@ const Filter = () => {
         />
       </div>
       <div className="category">
-        <button className="btn" onClick={handleClearFilter}>
+        <button className="btn clr" onClick={handleClearFilter}>
           Clear filters
         </button>
       </div>
@@ -165,6 +165,9 @@ const Section = styled.section`
     }
     .btn {
       width: 9rem;
+    }
+    .clr {
+      background-color: #e31626;
     }
   }
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
